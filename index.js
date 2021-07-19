@@ -29,25 +29,21 @@ console.log(processFirstItem(['foo','bar'],function(str){return str+str}));
   
   1. What is the difference between counter1 and counter2?
 
-     Counter 1 uses a function expression, counterMaker(); is an anonymous function. Inside, the invokation of counter() creates a closure. What this
-     allows is for counter() to use the count variable without being effected. 
+     Counter 1 uses a function expression, counterMaker(); is an anonymous function. Inside, the invocation of counter() creates a closure. What this
+     allows is for counter() to use the count variable without being effected. The count variable is only available within the function, its safe.
 
-     first count is available only within the function, its safe.
-     2nd count is a global variable, so if someone references this count its not protected. 
+     2nd count is a global variable, so if another function references this variable, its not protected. 
   
   2. Which of the two uses a closure? How can you tell?
 
-     Counter1 uses a closure. The invokation of the function within counterMaker() indicates this. 
+     Counter1 uses a closure. The invocation of the function within counterMaker() indicates this. 
   
   3. In what scenario would the counter1 code be preferable? In what scenario would 
-     counter2 be better?  
 
-     The scenario counter1 would be preferable is ... unless we wanted count to be accessible on global scale.
-     Counter2 would be useful.. if you wanted say, multiple functions to be able to add to the counter variable. Think exp in a game. Many skills can increase it.
-
-
-
-  Where is count available? 
+     The scenario counter1 would be preferable is in most cases, unless we wanted count to be accessible on global scale by other fuctions. 
+     Counter2 would be useful.. if you wanted say, multiple sources to be able to add to the counter variable. Think exp in a game..
+     Many skills can increase it.
+     
 */
 
 // counter1 code
