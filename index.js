@@ -31,6 +31,9 @@ console.log(processFirstItem(['foo','bar'],function(str){return str+str}));
 
      Counter 1 uses a function expression, counterMaker(); is an anonymous function. Inside, the invokation of counter() creates a closure. What this
      allows is for counter() to use the count variable without being effected. 
+
+     first count is available only within the function, its safe.
+     2nd count is a global variable, so if someone references this count its not protected. 
   
   2. Which of the two uses a closure? How can you tell?
 
@@ -41,6 +44,8 @@ console.log(processFirstItem(['foo','bar'],function(str){return str+str}));
 
      The scenario counter1 would be preferable is ... 
      Counter2 would be useful in ... 
+
+  Where is count available? 
 */
 
 // counter1 code
@@ -52,6 +57,7 @@ function counterMaker() {
 }
 
 const counter1 = counterMaker();
+console.log(counter1());
 
 // counter2 code
 let count = 0;
@@ -70,8 +76,8 @@ Use the inning function below to do the following:
 NOTE: This will be a callback function for the tasks below
 */
 
-function inning(/*Code Here*/){
-    /*Code Here*/
+function inning(){
+  return Math.floor(Math.random() * Math.floor(3));
 }
 
 
