@@ -78,7 +78,7 @@ Use the inning function below to do the following:
 NOTE: This will be a callback function for the tasks below
 */
 
-function inning(){
+const inning = function inning(){
   return Math.floor(Math.random() * Math.floor(3));
 }
 
@@ -118,10 +118,14 @@ Use the getInningScore() function below to do the following:
   1. Receive a callback function - you will pass in the inning function from task 2 as your argument 
   2. Return an object with a score for home and a score for away that populates from invoking the inning callback function */
 
-function getInningScore(/*Your Code Here */) {
-  /*Your Code Here */
+function getInningScore(inningcb) {
+  return {
+    Home: inningcb(),
+    Away: inningcb()
+  }
 }
 
+console.log('task 4', getInningScore(inning));
 
 /* ⚾️⚾️⚾️ Task 5: scoreboard() ⚾️⚾️⚾️
 Use the scoreboard function below to do the following:
@@ -163,12 +167,34 @@ Use the scoreboard function below to do the following:
   "This game will require extra innings: Away 10 - Home 10"
 ]  
   */
-
-function scoreboard(/* CODE HERE */) {
-  /* CODE HERE */
+// pass in getInningcb, inningcb, inningsNum
+function scoreboard(getInningScorecb, inningcb, inningNum) {
+  //declare an array that we can push our results
+  let gameScore = [];
+  //make a variable for homeScore and awayScore and set them to 0 (let)
+  let homeScore = 0;
+  let awayScore = 0;
+  //for loop inningNum
+  for (let i = 0; i < inningNum; i++){
+  //create varaible for the home + away object from getInningcb(inningcb) 
+    const currentScore = getInningScorecb(inningcb);
+  //update your variables of home and awy for each inning
+    homeScore += currentScore.Home;
+    awayScore += currentScore.Away;
+  //push them to your array
+    gameScore.push(`Inning ${i + 1}: Away: ${awayScore} - Home: ${homeScore}`);
+  }
+  if (awayScore === homeScore){
+    gameScore.push(`This game will require extra innings: Away ${awayScore} - Home ${homeScore}`);
+  }
+  else {
+    gameScore.push(`Final Score: Away ${awayScore} - Home ${homeScore}`);
+  }
+  //return array
+  return gameScore;
 }
 
-
+console.log('task 5', scoreboard(getInningScore, inning, 9));
 
 
 /* 🛑🛑🛑🛑🛑 Please do not modify anything below this line 🛑🛑🛑🛑🛑 */
