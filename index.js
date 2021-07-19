@@ -42,8 +42,10 @@ console.log(processFirstItem(['foo','bar'],function(str){return str+str}));
   3. In what scenario would the counter1 code be preferable? In what scenario would 
      counter2 be better?  
 
-     The scenario counter1 would be preferable is ... 
-     Counter2 would be useful in ... 
+     The scenario counter1 would be preferable is ... unless we wanted count to be accessible on global scale.
+     Counter2 would be useful.. if you wanted say, multiple functions to be able to add to the counter variable. Think exp in a game. Many skills can increase it.
+
+
 
   Where is count available? 
 */
@@ -80,6 +82,7 @@ function inning(){
   return Math.floor(Math.random() * Math.floor(3));
 }
 
+console.log('task 2', inning());
 
 /* ⚾️⚾️⚾️ Task 3: finalScore() ⚾️⚾️⚾️
 Use the finalScore function below to do the following:
@@ -95,9 +98,20 @@ Use the finalScore function below to do the following:
 }
 */ 
 
-function finalScore(/*code Here*/){
-  /*Code Here*/
+function finalScore(inningcb, totalInnings){
+  let homeScore = 0;
+  let awayScore = 0;
+  for(let i = 0; i < totalInnings; i++){
+    homeScore = homeScore + inningcb();
+    awayScore = awayScore + inningcb();
+  }
+  return {
+    Home: homeScore,
+    Away: awayScore
+  }
 }
+
+console.log('task 3', finalScore(inning, 3));
 
 /* ⚾️⚾️⚾️ Task 4: getInningScore() ⚾️⚾️⚾️
 Use the getInningScore() function below to do the following:
